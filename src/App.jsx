@@ -1,19 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Main from './Main';
+import Alert from './alert/Alert';
+import { AlertProvider } from './alert/AlertContext';
 
 function App() {
-  const [number, setNumber] = useState(42);
-  const [colored, setColored] = useState(false);
-
-  const styles = {
-    color: colored ? 'darkred' : 'black'
-  }
-
   return (
-    <div>
-      <h1 style={styles}>Счетчик: {number}</h1>
-      <button onClick={() => setNumber(prev => prev + 1)} className='btn btn-success'>Добавить</button>
-      <button onClick={() => setColored(prev => !prev)} className='btn btn-warning'>Изменить</button>
-    </div>
+    <AlertProvider >
+      <div className={'container pt-3'}>
+        <Alert />
+        <Main toggle={() => { }} />
+      </div>
+    </AlertProvider>
   );
 }
 
